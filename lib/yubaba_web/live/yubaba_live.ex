@@ -39,6 +39,9 @@ defmodule YubabaWeb.YubabaLive do
   def handle_event("yubaba", %{"name" => name}, socket) do
     new_name = Yubaba.Yubaba.new_name(name)
 
+    {:ok, %Yubaba.Accounts.User{}} =
+      Yubaba.Accounts.create_user(%{name: name, new_name: new_name})
+
     socket =
       assign(socket,
         name: name,
