@@ -35,7 +35,7 @@ RUN mix do compile, release
 
 # prepare release image
 FROM alpine:3.9 AS app
-RUN apk add --no-cache openssl ncurses-libs bash
+RUN apk add --no-cache openssl ncurses-libs bash postgresql-client
 
 WORKDIR /app
 COPY entrypoint.sh .
